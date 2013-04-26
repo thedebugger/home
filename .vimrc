@@ -43,3 +43,7 @@ command -nargs=0 -bar Update if &modified
                            \|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
 :inoremap <c-s> <c-o>:Update<CR>
+:nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+:nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+:nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+:nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
