@@ -13,6 +13,8 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
+Plugin 'vim-scripts/Vim-R-plugin'
+Plugin 'LnL7/vim-nix'
 call vundle#end()
 filetype plugin indent on
 
@@ -150,14 +152,15 @@ autocmd BufWritePre * :%s/\s\+$//e
 " CtrlP settings
 :nmap <leader>; :CtrlPBuffer<CR>
 let g:ctrlp_max_files = 10000
-:let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|class)$|(^|[/\\])\.(hg|git|bzr|svn)($|[/\\])|__init__\.py'
-:let g:ctrlp_match_window_reversed = 0
-:let g:ctrlp_working_path_mode = 0
-:let g:ctrlp_dotfiles = 0
-:let g:ctrlp_switch_buffer = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|class)$|(^|[/\\])\.(hg|git|bzr|svn)($|[/\\])|__init__\.py'
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " Nerd tree
 :nmap <leader>e :NERDTreeTabsToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
 
 " Syntastic
 " http://superuser.com/questions/302186/vim-scrolls-very-slow-when-a-line-is-to-long
