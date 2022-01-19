@@ -68,6 +68,8 @@
     file
     weechat
     vagrant
+    gnumake
+    google-cloud-sdk
   ];
 
   services.zookeeper.enable = false;

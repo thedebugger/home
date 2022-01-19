@@ -1,8 +1,10 @@
 scriptencoding utf-8
 set encoding=utf-8
+" https://github.com/VundleVim/Vundle.vim/issues/312
+set shell=bash
 
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=$GOROOT/misc/vim
+" set rtp+=$GOROOT/misc/vim
 " Vundle config https://github.com/gmarik/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -15,6 +17,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
 Plugin 'vim-scripts/Vim-R-plugin'
 Plugin 'LnL7/vim-nix'
+Plugin 'fatih/vim-go'
 call vundle#end()
 filetype plugin indent on
 
@@ -147,12 +150,17 @@ nnoremap <leader>d   :bd<cr>
 " Autocommands
 "----------------------------------------------------------------------
 " Clear whitespace at the end of lines automatically
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 
 " CtrlP settings
 :nmap <leader>; :CtrlPBuffer<CR>
 let g:ctrlp_max_files = 10000
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|class)$|(^|[/\\])\.(hg|git|bzr|svn)($|[/\\])|__init__\.py'
+"#let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend|class)$|(^|[/\\])\.(hg|git|bzr|svn)($|[/\\])|__init__\.py'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)|(target)$',
+  \ 'file': '\v\.(exe|so|dll|o|swp|pyc|wav|mp3|ogg|blend|class)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0

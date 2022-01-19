@@ -1,6 +1,4 @@
 # Path to your oh-my-fish.
-set fish_path $HOME/.oh-my-fish
-
 # Theme
 set fish_theme robbyrussell
 
@@ -13,11 +11,13 @@ set -x EDITOR vim
 # Path to your custom folder (default path is $FISH/custom)
 #set fish_custom $HOME/dotfiles/oh-my-fish
 
-# Load oh-my-fish configuration.
-. $fish_path/oh-my-fish.fish
-
 alias be 'bundle exec'
 alias bi 'bundle install'
 alias bu 'bundle update'
 alias rgs 'rvm --force gemset empty'
 
+alias nix-fshell "nix-shell --run fish"
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
