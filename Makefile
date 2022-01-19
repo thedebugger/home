@@ -24,3 +24,11 @@ setup-ssh:
 
 nixos-upgrade:
 	nixos-rebuild switch --upgrade
+
+setup-home-manager:
+	nix-channel --add https://github.com/nix-community/home-manager/archive/release-21.11.tar.gz home-manager
+	nix-channel --update
+	nix-shell '<home-manager>' -A install
+	mkdir -p ~/.config/nixpkgs
+	cp nixos/machines/home_m1.nix ~/.config/nixpkgs/home.nix
+	home-manager switch
