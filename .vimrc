@@ -180,6 +180,9 @@ set synmaxcol=80
 " JSON
 let g:vim_json_syntax_conceal = 0
 
+" https://github.com/fatih/vim-go/issues/2365
+let g:go_gopls_enabled = 0
+
 "TODO's
 "https://github.com/Lokaltog/vim-easymotion
 "
