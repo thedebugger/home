@@ -15,6 +15,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  #boot.kernelPackages = pkgs.linuxPackages_5_10;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,7 +44,7 @@
   # services.xserver.enable = true;
 
 
-  
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -65,6 +66,7 @@
     group = "users";
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     createHome = true;
+    #openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJPcybv5zF6qXuf4j8pj5vmhVoTwT6GlYZwvAKYeb+Zc sumit.vij@creditkarma.com"];
   };
   security.sudo.wheelNeedsPassword = false;
 
@@ -101,17 +103,23 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    settings = {
+      default-cache-ttl = 1800;
+    };
+  };
+
+  boot.binfmt.registrations."x86_64-linux".fixBinary = true;
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
 
   # List services that you want to enable:
   users.defaultUserShell = "/run/current-system/sw/bin/fish";
   virtualisation.docker.enable = true;
   #added ck certs to root
   #virtualisation.docker.extraOptions = "--insecure-registry registry.corp.creditkarma.com --insecure-registry gold.artifactory.corp.creditkarma.com";
-  virtualisation.docker.storageDriver = "devicemapper";
+  #virtualisation.docker.storageDriver = "devicemapper";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
